@@ -1,0 +1,19 @@
+<% if category.child.present? %>
+  <% if category.published %>
+    <li class="item_category_parent">
+      <i class="material-icons md-36 icon-cate"><%= category.icon %></i>&nbsp;&nbsp;&nbsp;<%= category.title %>      
+    </li>
+  <% end %> 
+
+  <% category.child.sort_by { |e| e[:tag] }.each do |child| %>
+    <% if child.published %>
+      <%= render 'shared/sub_category', category: child %>
+    <% end %>
+  <% end %>
+<% else %>
+    <% if category.published %>
+        <li class="item_category">
+          <%= link_to '<i class="material-icons md-36 icon-cate">'.html_safe + category.icon + '</i>&nbsp; &nbsp;'.html_safe + category.title, request.base_url + '/categories/'%>
+        </li>
+    <% end %>
+<% end %>

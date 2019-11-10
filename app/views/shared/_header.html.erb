@@ -1,0 +1,130 @@
+<header>
+  <ul id='dropdown1' class='dropdown-content'>
+    <li class="item_category_mobile">
+      <%= link_to edit_user_registration_path do %>
+        <i class="material-icons md-24 icon-cate-in-mobile">settings</i> Account settings
+      <% end %>
+    </li>
+    <li class="item_category_mobile">
+      <%= link_to root_path do %>
+        <i class="material-icons md-24 icon-cate-in-mobile">history</i> History Orders
+      <% end %>
+    </li> 
+    <li class="divider"></li>
+    <li class="item_category_mobile">
+      <%= link_to destroy_user_session_path, method: :delete, title: 'Logout' do %>
+        <i class="material-icons md-24 icon-cate-in-mobile">settings_power</i> Logout
+      <% end %>
+    </li> 
+  </ul>
+
+  <nav class="blue-grey darken-3 z-depth-2" id="nav-header-shop">
+    <div class="container" id="customize-home-container">
+      <div class="nav-wrapper"> 
+        <%= link_to image_tag('logo.png'), root_path, class: "brand-logo" %>
+
+        <a href="#" data-activates="mobile-demo" class="button-collapse right">
+          <i class="material-icons">menu</i>
+        </a>
+
+        <ul class="right hide-on-med-and-down">
+          <li class="li-list-item-top-menu">
+            <ul class="ul-list-item-header">
+              <a href="#" class="link-to-item-header">
+                <li class="li-list-item-header">
+                  <i class="material-icons md-24 icon-in-top-menu">time_to_leave</i>
+                </li>
+                <li class="li-list-item-header">
+                  Car
+                </li> 
+              </a>
+            </ul>
+          </li>
+
+          <li class="li-list-item-top-menu">
+            <ul class="ul-list-item-header">
+              <a href="#" class="link-to-item-header">
+                <li class="li-list-item-header">
+                  <i class="material-icons md-24 icon-in-top-menu">settings</i>
+                </li>
+                <li class="li-list-item-header">
+                  Machines
+                </li> 
+              </a>
+            </ul>
+          </li>
+
+          <li class="li-list-item-top-menu">
+            <ul class="ul-list-item-header">
+              <a href="#" class="link-to-item-header">
+                <li class="li-list-item-header">
+                  <i class="material-icons md-24 icon-in-top-menu">library_books</i>
+                </li>
+                <li class="li-list-item-header">
+                  Books
+                </li> 
+              </a>
+            </ul>
+          </li>
+
+          <li class="li-list-item-top-menu">
+            <ul class="ul-list-item-header">
+              <a href="#" class="link-to-item-header">
+                <li class="li-list-item-header">
+                  <i class="material-icons md-24 icon-in-top-menu">device_hub</i>
+                </li>
+                <li class="li-list-item-header">
+                  Product
+                </li> 
+              </a>
+            </ul>
+          </li>
+
+          <% if !user_signed_in? %>
+              <li class="li-list-item-top-menu">
+                <ul class="ul-list-item-header">
+                  <%= link_to new_user_registration_path, class: 'link-to-item-header' do %>
+                      <li class="li-list-item-header">
+                        <i class="material-icons md-24 icons-task-header-menu">person_add</i>
+                      </li>
+                      <li class="li-list-item-header">
+                        Sign Up
+                      </li>
+                  <% end %>
+                </ul>
+              </li>
+
+              <li class="li-list-item-top-menu">
+                <ul class="ul-list-item-header">
+                  <%= link_to new_user_session_path, class: 'link-to-item-header' do %>
+                      <li class="li-list-item-header">
+                        <i class="material-icons md-24 icons-task-header-menu">lock</i>
+                      </li>
+                      <li class="li-list-item-header">
+                        Login
+                      </li>
+                  <% end %>
+                </ul>
+              </li>
+          <% else %>
+              <li>
+                <a class="dropdown-button valign-wrapper" href="#" data-activates="dropdown1">
+                  <%= image_tag avatar_url(current_user), class: 'circle responsive-img avatar-small' %>&nbsp;
+                  <%= current_user.name %>
+                  <i class="material-icons md-36">arrow_drop_down</i>
+                </a>
+              </li>
+
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, title: 'Logout' do %>
+                    <i class="material-icons md-36" id="logout-button">settings_power</i>
+                <% end %>
+              </li>
+          <% end %>
+        </ul>
+
+        <!-- for mobile UI -->
+      </div>
+    </div>
+  </nav>
+</header>

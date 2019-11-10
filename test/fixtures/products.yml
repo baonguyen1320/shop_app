@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  content: MyText
+  price: 9.99
+  buyer: 1
+  data_file: MyString
+  manufacturer: MyString
+  category: one
+  published: false
+  tags: MyString
+  langugage: MyString
+  slug: MyString
+
+two:
+  name: MyString
+  content: MyText
+  price: 9.99
+  buyer: 1
+  data_file: MyString
+  manufacturer: MyString
+  category: two
+  published: false
+  tags: MyString
+  langugage: MyString
+  slug: MyString

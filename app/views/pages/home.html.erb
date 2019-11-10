@@ -1,0 +1,82 @@
+<div class="slider row">
+  <ul class="slides">
+    <li>
+      <%= image_tag 'slider-1.jpg', style: "width: 100%; height: 100%" %>
+      <div class="caption left-align" style="top: 3%">
+        <h3>SuperShop</h3>
+        <h5>Shel everything</h5>
+        <h5>Ship to door</h5>
+        <h5>Protect buyer</h5>
+        <h5>Commitment to refund</h5>
+      </div>
+    </li>
+
+    <li>
+      <%= image_tag 'slider-2.jpg', style: "width: 100%; height: 100%" %>
+      <div class="caption left-align" style="top: 3%">
+        <h3>Payment online</h3>
+        <h5>Shel everything</h5>
+        <h5>Ship to door</h5>
+        <h5>Protect buyer</h5>
+        <h5>Commitment to refund</h5>
+      </div>
+    </li>
+
+    <li>
+      <%= image_tag 'slider-3.jpg', style: "width: 100%; height: 100%" %>
+      <div class="caption left-align" style="top: 3%">
+        <h3>Technology goods</h3>
+        <h5>Shel everything</h5>
+        <h5>Ship to door</h5>
+        <h5>Protect buyer</h5>
+        <h5>Commitment to refund</h5>
+      </div>
+    </li>
+
+    <li>
+      <%= image_tag 'slider-4.jpg', style: "width: 100%; height: 100%" %>
+      <div class="caption left-align" style="top: 3%">
+        <h3>Industries machine</h3>
+        <h5>Shel everything</h5>
+        <h5>Ship to door</h5>
+        <h5>Protect buyer</h5>
+        <h5>Commitment to refund</h5>
+      </div>
+    </li>
+
+    <li>
+      <%= image_tag 'slider-5.jpg', style: "width: 100%; height: 100%" %>
+      <div class="caption right-align" style="top: 3%">
+        <h3>SuperShop</h3>
+        <h5>Shel everything</h5>
+        <h5>Ship to door</h5>
+        <h5>Protect buyer</h5>
+        <h5>Commitment to refund</h5>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="row row-space-home-page">
+</div>
+
+<div class="container" id="customize-home-container">
+  <div class="row">
+    <div class="col s12 m12 l3 left-menu-tab">
+      <%= render partial: 'shared/category' %>
+    </div>
+    <div class="col s12 m12 l9">
+      <% if @products.present? && @products.count > 0 %>
+        <div class="row row-latest-home-items">
+          <%= render partial: 'shared/products' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.slider').slider({ height: 720 });
+  });
+</script>
