@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', password: 'secret', confirmation: 'confirmations', unlock: 'unblock', registration: 'register', sign_up: ''},
-    controller: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
 
   root 'pages#home', as: :root
   get 'login/create', to: 'logins#create', as: :create_login

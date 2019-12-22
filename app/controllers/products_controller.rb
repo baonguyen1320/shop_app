@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    puts '####111'
     @product = Product.find(params[:id])
   end
 
@@ -57,7 +56,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    puts '####'
     @product.destroy
     respond_to do |format|
       format.html { redirect_to category_products_path, notice: 'Product was successfully destroyed.' }
@@ -68,7 +66,6 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      puts params.to_json
       @product = Product.find(params[:id])
     end
 

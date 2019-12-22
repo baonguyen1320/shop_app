@@ -20,7 +20,7 @@
         </div>
 
         <div class="card-content">
-          <%= form_for(resource, as: resource_name, class: 'recaptcha', url: registration_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
               <%= render partial: 'shared/devise_message' %>
 
@@ -61,7 +61,7 @@
                   <i class="material-icons md-36" id="InforCheckPasswordError">error</i>
                 </div>
               </div>
-
+              <%#= recaptcha_tags %>
               <div class="row center">
                 <%= invisible_recaptcha_tags callback: 'submitInvisibleRecaptchaForm',
                                              class: 'btn pink darken-2 waves-effect waves-light', id: 'button-submit-sign-up',
@@ -78,8 +78,8 @@
 </div>
 
 <script>
-    var submitInvisibleRecaptchaForm = function () {
-        document.getElementByClass("recaptcha").submit();
+    function submitInvisibleRecaptchaForm() {
+      document.getElementById("new_user").submit();
     };
 </script>
 
@@ -107,13 +107,13 @@
         var response = -1;
 
         $.ajax({
-            type: "GET",
-            url: "/check-user",
-            data: user,
-            async: false,
-            success: function (text) {
-                response = parseInt(text);
-            }
+          type: "GET",
+          url: "/check-user",
+          data: user,
+          async: false,
+          success: function (text) {
+              response = parseInt(text);
+          }
         });
 
         if ((response === 1) || (response === 2)) {
