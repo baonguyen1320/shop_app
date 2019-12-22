@@ -60,4 +60,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.google_sign_in.client_id     = '1025268074439-qedsumbr4e7j53ov7mi60rq19uc5a584.apps.googleusercontent.com'
+  config.google_sign_in.client_secret = 'HmLG4duXUsF0QCoazzVR8TS5'
 end

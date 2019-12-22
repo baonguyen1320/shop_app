@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :omniauthable
 
 
-  def self.find_for_google_oauth2(provider, uid, name, email, signed_in_resource = nil)
+  def self.find_for_google_oauth2(provider, uid, name, email, avatar)
     user = User.where(:provider => provider, :uid => uid).first
 
     if user
@@ -27,6 +27,7 @@ class User < ApplicationRecord
             provider: provider,
             email: email,
             uid: uid,
+            image: avatar,
             password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation!
@@ -36,4 +37,35 @@ class User < ApplicationRecord
       end
     end
   end
+
+  # def self.find_for_facebook_oauth(provider, uid, name, email, signed_in_resource = nil)
+  #   user = User.where(:provider => provider, :uid => uid).first
+
+  #   if user
+  #     user.skip_confirmation!
+  #     user.skip_confirmation_notification!
+  #     user.save
+  #     return user
+  #   else
+  #     registered_user = User.where(:email => email).first
+  #     if registered_user
+  #       registered_user.skip_confirmation!
+  #       registered_user.skip_confirmation_notification!
+  #       registered_user.save
+  #       return registered_user
+  #     else
+  #       user = User.new(
+  #           name: name,
+  #           provider: provider,
+  #           email: email,
+  #           uid: uid,
+  #           password: Devise.friendly_token[0, 20]
+  #       )
+  #       user.skip_confirmation!
+  #       user.skip_confirmation_notification!
+  #       user.save
+  #       return user
+  #     end
+  #   end
+  # end
 end

@@ -61,6 +61,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_user
+    email = params[:email]
+    user = User.where('email = ?', email).first
+    if user.present?
+        render plain: '1'
+    else
+      render plain: '0'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

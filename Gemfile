@@ -43,9 +43,14 @@ gem 'font-awesome-sass'
 gem 'devise'
 
 gem 'omniauth', '~> 1.7', '>= 1.7.1'
-gem 'omniauth-google-oauth2', '~> 0.5.2'
+gem 'google_sign_in'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-twitter', '~> 1.4'
+
+gem 'recaptcha', require: 'recaptcha/rails'
+
+#use key in application.yml
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
