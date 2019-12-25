@@ -1,28 +1,144 @@
-<div class="container"> 
-  <h2>Log in</h2>
+<div class="container">
+  <div class="row"></div>
+  <div class="row"></div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+  <div class="row">
+    <div class="col s12 m12 l4 center">
+      <div class="card-panel center-align">
+        <div>
+          <%= google_sign_in_button 'Sign in with my Google account', class:'loginBtn loginBtn--google', proceed_to: create_login_url %>
+        </div>
+        <div class="row s12">
+          <%= link_to '<i class="fa fa-facebook"></i>&nbsp; &nbsp; Sign up with Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn blue darken-4' %>
+        </div>
       </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in" %>
     </div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
+    <div class="col s12 m12 l8">
+      <div class="card">
+        <div class="title-sign-up-page center blue-grey darken-3">
+          Login
+        </div>
+        <div class="card-content">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+            <%= render partial: 'shared/devise_message' %>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons md-36 prefix icon-account-material">email</i>&nbsp;
+                <%= f.email_field :email, :id => 'user_email', :autocomplete => 'on', :class => 'validate', :placeholder => 'Email' %>
+                <span id="message-for-email"></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons md-36 prefix icon-account-material">lock_outline</i>&nbsp;
+                <%= f.password_field :password, :id => 'user_password', :autocomplete => 'on', :class => 'validate', :placeholder => 'Password' %>
+              </div>
+            </div>
+
+<!--            <div id="token-code-login" class="row">-->
+<!--              <div class="input-field col s12">-->
+<!--                <i class="material-icons md-36 prefix icon-account-material">dialpad</i>&nbsp;-->
+                <%#= f.text_field :otp_code_token, placeholder: 'Verification Code', class: 'validate' %>
+<!--              </div>-->
+<!--            </div>-->
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              </div>
+            <% end -%>
+
+            <div class="row center">
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+              </div>
+            </div>
+
+            <div class="row center">
+              <div class="input-field col s12">
+                Or <%= link_to 'Forgot Password', new_user_password_path %>
+              </div>
+            </div>
+          <% end %>
+          <div class="row center">
+            <p>Don't have an account?
+              <%= link_to 'Sign up', new_user_registration_path %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+
+  function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    return pattern.test(emailAddress);
+  }
+
+  function checkFormatEmail() {
+    var mail = $("#user_email").val();
+
+    var length_email = mail.length;
+
+    if (length_email === 0) {
+      $("#message-for-email").hide();
+      return;
+    }
+
+    if (!isValidEmailAddress(mail)) {
+      $("#message-for-email").html("<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Wrong format email, please enter again.");
+      $("#message-for-email").css("color", "red");
+      $("#message-for-email").show();
+      return;
+    }
+
+    var user = {email: mail};
+
+    var response = -1;
+    $.ajax({
+      type: "GET",
+      url: "/check-user",
+      data: user,
+      async: false,
+      success: function (text) {
+        response = parseInt(text);
+      }
+    });
+
+    if (response === 0) {
+      $("#message-for-email").html("<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This email is unregistered, please sign up.");
+      $("#message-for-email").css("color", "red");
+      $("#message-for-email").show();
+      $("#token-code-login").hide();
+    }
+    else if (response === 1) {
+      $("#message-for-email").hide();
+      $("#token-code-login").hide();
+    }
+    else if (response === 2) {
+      $("#message-for-email").hide();
+      $("#token-code-login").show();
+    }
+    else {
+      $("#message-for-email").hide();
+      $("#token-code-login").hide();
+    }
+  }
+
+  $(document).ready(function () {
+    $("#user_email").focusout(checkFormatEmail);
+    $("#user_password").focusout(checkFormatEmail);
+    $("#message-for-email").hide();
+    $("#token-code-login").hide();
+  });
+</script>

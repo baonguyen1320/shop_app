@@ -4,13 +4,12 @@
   <div class="row">
     <div class="col s12 m12 l4 center">
       <div class="card-panel center-align">
-        <%= google_sign_in_button proceed_to: create_login_url do %>
-         <i class="fa fa-google btn darken-4 white black-text"> Sign in with my Google account</i>
-        <% end %>
+        <div>
+          <%= google_sign_in_button 'Sign in with my Google account', class:'loginBtn loginBtn--google', proceed_to: create_login_url %>
+        </div>
         <div class="row s12">
           <%= link_to '<i class="fa fa-facebook"></i>&nbsp; &nbsp; Sign up with Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn blue darken-4' %>
         </div>
-
       </div>
     </div>
     <div class="col s12 m12 l8 center">

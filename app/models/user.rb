@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :timeoutable, :omniauthable
+         :confirmable, :timeoutable, :omniauthable
 
 
   def self.find_for_google_oauth2(provider, uid, name, email, avatar)
