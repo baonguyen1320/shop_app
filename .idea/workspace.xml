@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92631f27-daa5-44be-9b6f-0ae1b91990ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/users/sessions_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
-    </list>
+    <list default="true" id="92631f27-daa5-44be-9b6f-0ae1b91990ff" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -46,7 +35,7 @@
     <session id="1046666945">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.12" value="2" />
@@ -59,7 +48,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Gemfile" value="1" />
-          <entry key="erb" value="21" />
+          <entry key="erb" value="22" />
           <entry key="lock" value="1" />
           <entry key="rb" value="139" />
           <entry key="scss" value="1" />
@@ -69,7 +58,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="RHTML" value="21" />
+          <entry key="RHTML" value="22" />
           <entry key="Ruby" value="140" />
           <entry key="SCSS" value="1" />
           <entry key="YAML" value="2" />
@@ -96,8 +85,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="450">
+              <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#6#12#1" expanded="true" />
+                <element signature="e#13#19#1" expanded="true" />
+                <element signature="e#20#26#1" expanded="true" />
+                <element signature="e#27#33#1" expanded="true" />
+                <element signature="e#34#40#1" expanded="true" />
+                <element signature="e#41#47#1" expanded="true" />
+                <element signature="e#6#12#1" expanded="true" />
+                <element signature="e#13#19#1" expanded="true" />
+                <element signature="e#20#26#1" expanded="true" />
+                <element signature="e#27#33#1" expanded="true" />
+                <element signature="e#34#40#1" expanded="true" />
+                <element signature="e#41#47#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -403,12 +415,12 @@
       <workItem from="1575796346851" duration="7347000" />
       <workItem from="1576158264345" duration="3700000" />
       <workItem from="1577002284502" duration="10398000" />
-      <workItem from="1577276361186" duration="4730000" />
+      <workItem from="1577276361186" duration="4985000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28193000" />
+    <option name="totallyTimeSpent" value="28448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-116" width="1920" height="980" extended-state="0" />
@@ -417,7 +429,7 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.13844515" />
       <window_info id="Structure" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="0" visible="true" weight="0.54565954" />
+      <window_info anchor="bottom" id="Debug" order="0" weight="0.54565954" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32919955" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
@@ -725,27 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
-          <folding>
-            <element signature="e#6#12#1" expanded="true" />
-            <element signature="e#13#19#1" expanded="true" />
-            <element signature="e#20#26#1" expanded="true" />
-            <element signature="e#27#33#1" expanded="true" />
-            <element signature="e#34#40#1" expanded="true" />
-            <element signature="e#41#47#1" expanded="true" />
-            <element signature="e#6#12#1" expanded="true" />
-            <element signature="e#13#19#1" expanded="true" />
-            <element signature="e#20#26#1" expanded="true" />
-            <element signature="e#27#33#1" expanded="true" />
-            <element signature="e#34#40#1" expanded="true" />
-            <element signature="e#41#47#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/actionpack-5.2.3/lib/action_controller/metal/basic_implicit_render.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -948,10 +939,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#6#12#1" expanded="true" />
+            <element signature="e#13#19#1" expanded="true" />
+            <element signature="e#20#26#1" expanded="true" />
+            <element signature="e#27#33#1" expanded="true" />
+            <element signature="e#34#40#1" expanded="true" />
+            <element signature="e#41#47#1" expanded="true" />
+            <element signature="e#6#12#1" expanded="true" />
+            <element signature="e#13#19#1" expanded="true" />
+            <element signature="e#20#26#1" expanded="true" />
+            <element signature="e#27#33#1" expanded="true" />
+            <element signature="e#34#40#1" expanded="true" />
+            <element signature="e#41#47#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="450">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
         </state>
       </provider>
     </entry>

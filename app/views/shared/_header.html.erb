@@ -23,7 +23,7 @@
       <div class="nav-wrapper"> 
         <%= link_to image_tag('logo.png'), root_path, class: "brand-logo" %>
 
-        <a href="#" data-activates="mobile-demo" class="button-collapse right">
+        <a href="#" data-target="dropdown1" class="button-collapse right">
           <i class="material-icons">menu</i>
         </a>
 
@@ -108,7 +108,7 @@
               </li>
           <% else %>
               <li>
-                <a class="dropdown-button valign-wrapper" href="#" data-activates="dropdown1">
+                <a class="dropdown-button valign-wrapper" href="#" data-target="dropdown1">
                   <%= image_tag avatar_url(current_user), class: 'circle responsive-img avatar-small' %>&nbsp;
                   <%= current_user.name %>
                   <i class="material-icons md-36">arrow_drop_down</i>
@@ -123,8 +123,22 @@
           <% end %>
         </ul>
 
-        <!-- for mobile UI -->
+        <!-- for mobile UI -->      
       </div>
     </div>
   </nav>
 </header>
+
+<script>
+  $(document).ready(function () {
+    $('.dropdown-button').dropdown({
+        coverTrigger: false // Displays dropdown below the button
+      }
+    );
+    $('.button-collapse').dropdown({
+        coverTrigger: true, // Displays dropdown below the button
+        alignment: 'right', // Displays dropdown with edge aligned to the left 
+      }
+    );
+  })
+</script>
