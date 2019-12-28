@@ -1,43 +1,436 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container" id="customize-home-container">
+  <div class="row"></div>
+  <div class="row"></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="row">
+    <div class="col s12">
+      <div class="card" id="wrapper-user-profile">
+        <div class="title-order-page">
+          Edit Profile
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="card-content">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
+
+              <%= render partial: 'shared/devise_message' %>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">account_circle</i>&nbsp;
+                  <%= f.text_field :name, :id => 'name', :class => 'edit_profile', :placeholder => 'Name - Can not blank', autofocus: true %>
+                  <span id="show-message-name" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">email</i>&nbsp;
+                  <%= f.email_field :email, :id => 'email', :placeholder => 'Email - Can not blank', :class => 'edit_profile' %>
+                  <span id="show-message-email" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">room</i>&nbsp;
+                  <%= f.text_field :address, :id => 'address', :class => 'edit_profile', :placeholder => 'Address - Can not blank', autofocus: true %>
+                  <span id="show-message-address" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">room</i>&nbsp;
+                  <%= f.text_field :address2, :id => 'address2', :class => 'edit_profile', :placeholder => 'Address 2', autofocus: true %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">location_city</i>&nbsp;
+                  <%= f.text_field :city, :id => 'city', :class => 'edit_profile', :placeholder => 'City - Can not blank', autofocus: true %>
+                  <span id="show-message-city" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">my_location</i>&nbsp;
+                  <%= f.text_field :state, :id => 'state', :class => 'edit_profile', :placeholder => 'State - Can not blank', autofocus: true %>
+                  <span id="show-message-state" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="input-field col s12" id="input-for-country">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">public</i>
+                  <%= f.select(:country, options_for_select(ISO3166::Country.all, selected: current_user.country), {}, {:style => 'margin-left: 50px;'}) %>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">dialpad</i>&nbsp;
+                  <%= f.text_field :zipcode, :id => 'zipcode', :class => 'edit_profile', :placeholder => 'Zipcode - Can not blank', autofocus: true %>
+                  <span id="show-message-zipcode" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-profile-material">phone_in_talk</i>&nbsp;
+                  <%= f.text_field :phone, :id => 'phone', :placeholder => 'Phone - Can not blank', autofocus: false %>
+                  <span id="show-message-phone" style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can not blank</span>
+                </div>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <h5 class="left">Change Password</h5>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-material">lock_outline</i>&nbsp;
+                  <%= f.password_field :password, :id => 'profile_change_password', :placeholder => "New Password (skip if you don't want to change it)", autocomplete: 'off' %>
+                  <i class="material-icons md-36" id="InforCheckPasswordLength">done</i>
+                  <i class="material-icons md-36" id="InforCheckPasswordLengthError">error</i>
+                  <span id="show-message-password"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-material">vpn_key</i>&nbsp;
+                  <%= f.password_field :password_confirmation, :id => 'profile_password_confirmation', :placeholder => "Confirm Password (skip if you don't want to change it)", autocomplete: 'off' %>
+                  <i class="material-icons md-36" id="InforCheckPasswordMatch">done</i>
+                  <i class="material-icons md-36" id="InforCheckPasswordError">error</i>
+                </div>
+              </div>
+
+              <h5 class="left">Current Password</h5>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons md-36 prefix icon-account-material">lock_outline</i>&nbsp;
+                  <%= f.password_field :current_password, :id => 'profile_current_password', :class => 'edit_profile', :placeholder => 'Type current password to confirm your change', autocomplete: 'off' %>
+                  <br><span id="show-message-current-password" style="color: red">Must be enter</span>
+                </div>
+              </div>
+
+              <div class="row center">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Save</button>
+                &nbsp;&nbsp;<%= link_to 'Back', :back, :class => 'btn waves-effect waves-light' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<script>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+    function checkStrengthPassword(password) {
+        var strength = 0;
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        if (password.length < 6) {
+            return 0;
+        }
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+        if (password.length > 6) strength += 1;
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+        //If password contains both lower and uppercase characters, increase strength value.
+        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1;
 
-<h3>Cancel my account</h3>
+        //If it has numbers and characters, increase strength value.
+        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) strength += 1;
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        //If it has one special character, increase strength value.
+        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
 
-<%= link_to "Back", :back %>
+        //if it has two special characters, increase strength value.
+        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+
+        return strength;
+    }
+
+    function checkPasswordLength() {
+        var password = $("#profile_change_password").val();
+        var size_of_password = password.length;
+
+        if (size_of_password === 0) {
+            $("#InforCheckPasswordLength").hide();
+            $("#InforCheckPasswordLengthError").hide();
+            $("#show-message-password").hide();
+            return;
+        }
+
+        if (size_of_password >= 8) {
+            $("#InforCheckPasswordLength").show();
+            $("#InforCheckPasswordLengthError").hide();
+        }
+        else {
+            $("#InforCheckPasswordLength").hide();
+            $("#InforCheckPasswordLengthError").show();
+        }
+
+        var strength = checkStrengthPassword(password);
+
+        if (strength < 2) {
+            $("#show-message-password").html("<br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Password Strength : <b>Weak</b>");
+            $("#show-message-password").css("color", "blue");
+            $("#show-message-password").show();
+        }
+        if (strength === 2) {
+            $("#show-message-password").html("<br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Password Strength : <b>Good</b>");
+            $("#show-message-password").css("color", "blue");
+            $("#show-message-password").show();
+        }
+        if (strength > 2) {
+            $("#show-message-password").html("<br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Password Strength : <b>Strong</b>");
+            $("#show-message-password").css("color", "green");
+            $("#show-message-password").show();
+        }
+    }
+
+    function checkLostFocusPasswordBox() {
+        var password = $("#profile_change_password").val();
+        var size_of_password = password.length;
+
+        if (size_of_password >= 8) {
+            $("#show-message-password").html("<br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Your password : " + "<b>" + password + "</b>");
+            $("#show-message-password").css("color", "green");
+
+            $("#show-message-password").show();
+            $("#show-message-password").fadeOut(6000);
+        }
+        else {
+            $("#show-message-password").hide();
+        }
+    }
+
+    function checkPasswordMatch() {
+        var password = $("#profile_change_password").val();
+        var confirmPassword = $("#profile_password_confirmation").val();
+
+        if (confirmPassword.length === 0) {
+            $("#InforCheckPasswordMatch").hide();
+            $("#InforCheckPasswordError").hide();
+            return;
+        }
+
+        if ((password === confirmPassword) && (password.length > 0)) {
+            $("#InforCheckPasswordMatch").show();
+            $("#InforCheckPasswordError").hide();
+        }
+        else {
+            $("#InforCheckPasswordMatch").hide();
+            $("#InforCheckPasswordError").show();
+        }
+    }
+
+    function checkNameLength() {
+        var name = $("#name").val();
+        var size_of_name = name.length;
+
+        if (size_of_name > 0) {
+            $("#show-message-name").hide();
+        }
+        else {
+            $("#show-message-name").show();
+        }
+    }
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+        return pattern.test(emailAddress);
+    }
+
+    function checkFormatEmail() {
+        var mail = $("#email").val();
+
+        var length_email = mail.length;
+
+        if (length_email === 0) {
+            $("#show-message-email").show();
+            return;
+        }
+
+        if (!isValidEmailAddress(mail)) {
+            $("#show-message-email").html("<br/>Wrong format email, please enter again.");
+            $("#show-message-email").css("color", "red");
+            $("#show-message-email").show();
+            return;
+        }
+        else {
+            $("#show-message-email").hide();
+        }
+    }
+
+    function checkAddressLength() {
+        var address = $("#address").val();
+        var size_of_address = address.length;
+
+        if (size_of_address >= 3) {
+            $("#show-message-address").hide();
+        }
+        else {
+            $("#show-message-address").show();
+        }
+    }
+
+    function checkCityLength() {
+        var city = $("#city").val();
+        var size_of_city = city.length;
+
+        if (size_of_city >= 3) {
+            $("#show-message-city").hide();
+        }
+        else {
+            $("#show-message-city").show();
+        }
+    }
+
+    function checkStateLength() {
+        var state = $("#state").val();
+        var size_of_state = state.length;
+
+        if (size_of_state >= 2) {
+            $("#show-message-state").hide();
+        }
+        else {
+            $("#show-message-state").show();
+        }
+    }
+
+    function checkZipCodeLength() {
+        var zipcode = $("#zipcode").val();
+        var size_of_zipcode = zipcode.length;
+
+        if (size_of_zipcode >= 3) {
+            $("#show-message-zipcode").hide();
+        }
+        else {
+            $("#show-message-zipcode").show();
+        }
+    }
+
+    function checkPhoneLength() {
+        var phone = $("#phone").val();
+        var size_of_phone = phone.length;
+
+        if (size_of_phone >= 6) {
+            $("#show-message-phone").hide();
+        }
+        else {
+            $("#show-message-phone").show();
+        }
+    }
+
+    function checkAllFields() {
+        var name = $("#name").val();
+        var mail = $("#email").val();
+        var address = $("#address").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var zipcode = $("#zipcode").val();
+        var phone = $("#phone").val();
+        var current_password = $("#profile_current_password").val();
+
+        if (name.length === 0) {
+            $("#show-message-name").show();
+        }
+        else {
+            $("#show-message-name").hide();
+        }
+
+        if (mail.length === 0) {
+            $("#show-message-email").show();
+        }
+        else {
+            $("#show-message-email").hide();
+        }
+
+        if (address.length === 0) {
+            $("#show-message-address").show();
+        }
+        else {
+            $("#show-message-address").hide();
+        }
+
+        if (city.length === 0) {
+            $("#show-message-city").show();
+        }
+        else {
+            $("#show-message-city").hide();
+        }
+
+        if (state.length === 0) {
+            $("#show-message-state").show();
+        }
+        else {
+            $("#show-message-state").hide();
+        }
+
+        if (zipcode.length === 0) {
+            $("#show-message-zipcode").show();
+        }
+        else {
+            $("#show-message-zipcode").hide();
+        }
+
+        if (phone.length === 0) {
+            $("#show-message-phone").show();
+        }
+        else {
+            $("#show-message-phone").hide();
+        }
+
+        if (current_password.length === 0) {
+            $("#show-message-current_password").show();
+        }
+        else {
+            $("#show-message-current_password").hide();
+        }
+
+    }
+
+    $(document).ready(function () {
+
+        $("#InforCheckPasswordMatch").hide();
+        $("#InforCheckPasswordError").hide();
+
+        $("#InforCheckPasswordLength").hide();
+        $("#InforCheckPasswordLengthError").hide();
+
+        $("#show-message-password").hide();
+
+        $("#profile_change_password").keyup(checkPasswordLength);
+        $("#profile_change_password").focusout(checkLostFocusPasswordBox);
+
+        $("#profile_password_confirmation").keyup(checkPasswordMatch);
+        $("#profile_password_confirmation").focusout(checkAllFields);
+
+        $("#name").focusout(checkNameLength);
+
+        $("#email").focusout(checkFormatEmail);
+
+        $("#address").focusout(checkAddressLength);
+
+        $("#city").focusout(checkCityLength);
+
+        $("#state").focusout(checkStateLength);
+
+        $("#zipcode").focusout(checkZipCodeLength);
+
+        $("#phone").focusout(checkPhoneLength);
+
+        $('.collapsible').collapsible();
+
+        checkAllFields();
+    });
+</script>
