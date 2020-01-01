@@ -60,6 +60,16 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'localhost:3000',
+    user_name: 'baonguyen1103spkt@gmail.com',
+    password: 'wuyuzonwsqkluvfd',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   config.google_sign_in.client_id     = '1025268074439-qedsumbr4e7j53ov7mi60rq19uc5a584.apps.googleusercontent.com'
   config.google_sign_in.client_secret = 'HmLG4duXUsF0QCoazzVR8TS5'

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .card {
+      position: relative;
+      margin: 0.5rem 0 1rem 0;
+      background-color: #f3f3f3;
+      transition: box-shadow .25s;
+      border-radius: 2px;
+    }
+
+    .card .card-image {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card .card-content {
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0 0 2px 2px;
+    }
+
+    .container {
+      margin-left: 10px;
+      width: 98%;
+      max-width: 1300px;
+    }
+
+    .title-order-page {
+      color: white;
+      background-color: #37474f;
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="title-order-page">
+      Welcome new member!
+    </div>
+    <div class="card-content">
+      <h3>
+        Hello, <%= @user.name %>.
+      </h3>
+      <br/>
+      <p>Welcome to SuperShop, with our website you can buy anythings.</p>
+
+      <p>You can confirm your account email through the link below:</p>
+
+      <p><%= link_to 'Confirm my account', confirmation_url(@user, confirmation_token: @user.confirmation_token) %></p>
+      <p>Thank you!</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -9,9 +9,16 @@ class User < ApplicationRecord
   enum otp_module: { disabled: 0, enabled: 1 }, _prefix: true
   attr_accessor :otp_code_token
 
+  validates :name, presence: true, length: { minimum: 3, maximum: 25 }
+
+  after_create :send_email_welcome
+
+  def send_email_welcome
+    ShopMailer.to_user(self).deliver
+  end
+
   def self.find_for_google_oauth2(provider, uid, name, email, avatar)
     user = User.where(:provider => provider, :uid => uid).first
-
     if user
       user.skip_confirmation!
       user.skip_confirmation_notification!

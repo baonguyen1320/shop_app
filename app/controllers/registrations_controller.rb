@@ -1,11 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
-    if verify_recaptcha(model: resource) && resource.save
+    if verify_recaptcha(model: resource)
+      resource.skip_confirmation_notification!
+      resource.save
       yield resource if block_given?
       if resource.persisted?
         set_flash_message! :notice, :signed_up
-        resource.update confirmed_at: Time.now
+        # resource.update confirmed_at: Time.now
+        # resource.skip_confirmation!
         sign_in(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
