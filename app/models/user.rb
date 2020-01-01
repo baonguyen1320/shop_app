@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :timeoutable, :omniauthable
 
+  has_one_time_password
+  enum otp_module: { disabled: 0, enabled: 1 }, _prefix: true
+  attr_accessor :otp_code_token
 
   def self.find_for_google_oauth2(provider, uid, name, email, avatar)
     user = User.where(:provider => provider, :uid => uid).first

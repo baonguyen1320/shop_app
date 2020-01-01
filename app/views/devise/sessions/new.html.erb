@@ -39,12 +39,12 @@
               </div>
             </div>
 
-<!--            <div id="token-code-login" class="row">-->
-<!--              <div class="input-field col s12">-->
-<!--                <i class="material-icons md-36 prefix icon-account-material">dialpad</i>&nbsp;-->
-                <%#= f.text_field :otp_code_token, placeholder: 'Verification Code', class: 'validate' %>
-<!--              </div>-->
-<!--            </div>-->
+            <div id="token-code-login" class="row">
+              <div class="input-field col s12">
+                <i class="material-icons md-36 prefix icon-account-material">dialpad</i>&nbsp;
+                <%= f.text_field :otp_code_token, placeholder: 'Verification Code', class: 'validate' %>
+              </div>
+            </div>
 
             <% if devise_mapping.rememberable? -%>
               <div class="row">

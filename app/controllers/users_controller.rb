@@ -61,11 +61,19 @@ class UsersController < ApplicationController
     end
   end
 
+  # 0 : unregister
+  # 1 : user exist and no require token OTP
+  # 2 : user exist and require token OTP
   def check_user
     email = params[:email]
     user = User.where('email = ?', email).first
     if user.present?
+      if user.otp_module == 'disabled'
         render plain: '1'
+      end
+      if user.otp_module == 'enabled'
+        render plain: '2'
+      end
     else
       render plain: '0'
     end

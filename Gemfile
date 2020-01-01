@@ -51,6 +51,9 @@ gem 'recaptcha', require: 'recaptcha/rails'
 
 #use key in application.yml
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'active_model_otp'
+gem 'rqrcode'
+gem 'barby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
