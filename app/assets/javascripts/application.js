@@ -10,9 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require active_admin/base
 //= require jquery
 //= require materialize
 //= require materialize-sprockets
+//= require active_admin
 //= require rails-ujs
 //= require toastr
 //= require_tree .
+

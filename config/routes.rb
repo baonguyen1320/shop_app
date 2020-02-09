@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', password: 'secret', confirmation: 'confirmations', unlock: 'unblock', registration: 'register', sign_up: ''},
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'users/sessions' }
 
