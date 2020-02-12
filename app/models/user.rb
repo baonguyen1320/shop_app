@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :timeoutable, :omniauthable
 
+  # verify 2 factor
   has_one_time_password
   enum otp_module: { disabled: 0, enabled: 1 }, _prefix: true
   attr_accessor :otp_code_token

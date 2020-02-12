@@ -49,8 +49,10 @@ gem 'omniauth-twitter', '~> 1.4'
 
 gem 'recaptcha', require: 'recaptcha/rails'
 
-#use key in application.yml
+# use key in application.yml
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+
+# TFA
 gem 'active_model_otp'
 gem 'rqrcode'
 gem 'barby'
