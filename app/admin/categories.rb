@@ -20,6 +20,14 @@ ActiveAdmin.register Category do
   filter :tag
   filter :published
 
+  config.sort_order = 'tag_asc'
+  sortable tree: false, sorting_attribute: :tag
+
+  index :as => :sortable do
+    label :title
+    actions
+  end
+
   show do |_|
     attributes_table do
       row :parent

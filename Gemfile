@@ -58,6 +58,16 @@ gem 'rqrcode'
 gem 'barby'
 
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+# ckeditor need mini_magick go with
+gem 'ckeditor', '4.2.4'
+gem 'carrierwave', '1.2.1'
+gem 'fog', '1.42.0'
+gem 'mini_magick', '4.8.0'
+gem 'html_truncator', '0.4.1'
+gem 'will_paginate', '3.1.6'
+
+# gem dragdrop component -> use only for activeadmin
+gem 'active_admin-sortable_tree', '~> 2.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
