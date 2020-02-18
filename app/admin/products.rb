@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
   permit_params :id, :category_id, :name, :content, :price,
                 :buyer, :data_file, :published, :manufacturer,
-                :tags, :langugage
+                :tags, :langugage, :image
 
   index do
     selectable_column
@@ -27,6 +27,9 @@ ActiveAdmin.register Product do
       end
       row :price
       row :buyer
+      row :image do
+        t.image? ? image_tag(t.image.url, height: '100') : content_tag(:span, 'No photo yet')
+      end
       row :manufacturer
       row :langugage
       row :published
@@ -41,6 +44,7 @@ ActiveAdmin.register Product do
       f.input :content, as: :ckeditor
       f.input :price
       f.input :buyer
+      f.input :image, as: :file, hint: f.product.image? ? image_tag(product.image.url, height: '100') : content_tag(:span, 'Pls upload image')
       f.input :manufacturer
       f.input :langugage
       f.input :published
