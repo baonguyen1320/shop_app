@@ -6,11 +6,27 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
 
   Paperclip.options[:command_path] = "/usr/local/bin/"
-  config.paperclip_defaults = { 
-    storage: :fog,
-    fog_credentials: { provider: "Local", local_root: "#{Rails.root}/public"},
-    fog_directory: "",
-    fog_host: ""
+  # storage in local
+  # config.paperclip_defaults = {
+  #   storage: :fog,
+  #   fog_credentials: {
+  #     provider: "Local",
+  #     local_root: "#{Rails.root}/public"
+  #   },
+  #   fog_directory: "",
+  #   fog_host: ""
+  # }
+  # storage in s3
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_host_name: "s3-ap-southeast-1.amazonaws.com",
+    # s3_permissions: "public-read",
+    s3_credentials: {
+      bucket: 'shop-app-aws',
+      access_key_id: 'AKIAXNRJHSEQ4CCODOWI',
+      secret_access_key: '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',
+      s3_region: 'ap-southeast-1'
+    },
   }
 
 

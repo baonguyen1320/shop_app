@@ -5,4 +5,6 @@ class Product < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 2.megabytes
 
+  mount_uploader :data_file, DataFileUploader
+
 end
