@@ -1,59 +1,95 @@
-<p id="notice"><%= notice %></p>
+<div class="container" id="customize-home-container">
+  <div class="row"></div>
+  <div class="row"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+  <% if @product.published %>
+      <div class="row">
+        <div class="col s12 l4">
+          <div class="card z-depth-2">
+            <div class="title-course-banner">
+              <%= @product.name %>
+            </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @product.content.html_safe %>
-</p>
+            <div class="center container-price">
+              <% if false %>
+                  <div class="price-text-course">
+                    <p>
+                      <span id="price-current-product">$<%= @product.price.to_s %></span>
+                      <span id="older-price-product">$<%= @product.older_price.to_s %></span>
+                      <span id="discount-text">
+                      <%= @product.percent_sale_off %>
+                    </span>
+                    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+                    <p class="wrapper-count-down">
+                      <span id="message-sale-off-product"></span>
+                    </p>
+                  </div>
+              <% else %>
+                  <div class="price-text-course">
+                <span id="price-current-product">
+                    $<%= @product.price.to_s %>
+                </span>
+                  </div>
+              <% end %>
+            </div>
 
-<p>
-  <strong>Buyer:</strong>
-  <%= @product.buyer %>
-</p>
+            <div class="card-action center">
+              <div class="container-payment-button">
+                <%= form_tag '#', remote: true, method: :post do %>
+                    <%= submit_tag('Add to Cart', class: 'btn pink darken-2 paybutton', name: 'submit') %>
+                <% end %>
+              </div>
+            </div>
 
-<p>
-  <strong>Data file:</strong>
-  <%= @product.data_file %>
-</p>
 
-<p>
-  <strong>Manufacturer:</strong>
-  <%= @product.manufacturer %>
-</p>
+            <div class="row">
+              <div class="col s12 short-duration-enrolled">
+                <ul class="list-features-product" style="padding-left: 80px; padding-bottom: 50px;">
+                  <li class="item-feature-product">
+                    <i class="material-icons md-36 icon-banner-news">group</i>
+                    Buyers: <%= @product.buyer %>
+                  </li>
+                  <li class="item-feature-product">
+                    <i class="material-icons md-36 icon-banner-news">settings</i>
+                    Manufacturer : <%= @product.manufacturer %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l8">
+          <div class="card z-depth-2">
+            <div class="card-image">
+              <%= image_tag @product.image.url(:medium) %>
+            </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.title %>
-</p>
+            <div class="row">
+              <div class="col s12" id="show-info-product">
+                <div class="card-content grey-text text-darken-4" id="main-content-show">
+                  <div class="product-show-title">
+                    <%= @product.name %>
 
-<p>
-  <strong>Published:</strong>
-  <%= @product.published %>
-</p>
+                    <% unless @product.data_file.blank? %>
+                        <div class="product-icon-cloud right">
+                          <%= link_to @product.data_file.url, title: 'Download document', target: :_blank do %>
+                              <i class="material-icons md-36 icon-attach-task-show">cloud_download</i>
+                          <% end %>
+                        </div>
+                    <% end %>
+                  </div>
+                  <hr>
+                  <br/>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @product.tags %>
-</p>
-
-<p>
-  <strong>Langugage:</strong>
-  <%= @product.langugage %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @product.slug %>
-</p>
-
-<%= link_to 'Edit', edit_category_product_path(@product) %> |
-<%= link_to 'Back', category_products_path %>
+                  <div class="render-content-common">
+                    <%= @product.content.html_safe %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,6 +1,16 @@
 <div class="row"></div>
 <div class="row"></div>
-
-<div class="row">
-  <%= render partial: 'shared/products' %>
+<div class="container" id="customize-home-container">
+  <div class="row">
+    <div class="col s12 m12 l3 left-menu-tab">
+      <%= render partial: 'shared/category' %>
+    </div>
+    <div class="col s12 m12 l9">
+      <% if @products.present? && @products.count > 0 %>
+        <div class="row row-latest-home-items">
+          <%= render partial: 'shared/products' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

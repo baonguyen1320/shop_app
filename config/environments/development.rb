@@ -16,16 +16,16 @@ Rails.application.configure do
   #   fog_directory: "",
   #   fog_host: ""
   # }
+  
   # storage in s3
   config.paperclip_defaults = {
     storage: :s3,
     s3_host_name: "s3-ap-southeast-1.amazonaws.com",
-    # s3_permissions: "public-read",
     s3_credentials: {
       bucket: 'shop-app-aws',
-      access_key_id: 'AKIAXNRJHSEQ4CCODOWI',
-      secret_access_key: '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',
-      s3_region: 'ap-southeast-1'
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      s3_region: ENV['AWS_S3_REGION']
     },
   }
 

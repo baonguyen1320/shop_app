@@ -10,6 +10,15 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    category = Category.find(params[:id]) if params[:id].present?
+
+    if category.present?
+      @products = get_products(category)
+    else
+      @products = Product.all.order('id desc')
+    end
+
+    # @products = @products.paginate(page: params[:page], per_page: 9)
   end
 
   # GET /categories/new
@@ -62,6 +71,17 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+    def get_products(category)
+      items = category.products
+
+      category.child.each do |sub|
+        items += get_products(sub)
+      end
+
+      items.sort_by { |item| [item['created_at'], item['title']] }.reverse
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
