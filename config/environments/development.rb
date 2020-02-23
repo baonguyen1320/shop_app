@@ -97,6 +97,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.google_sign_in.client_id     = '1025268074439-qedsumbr4e7j53ov7mi60rq19uc5a584.apps.googleusercontent.com'
-  config.google_sign_in.client_secret = 'HmLG4duXUsF0QCoazzVR8TS5'
+  config.google_sign_in.client_id     = ENV['GOOGLE_APP_ID']
+  config.google_sign_in.client_secret = ENV['GOOGLE_APP_SECRET']
 end
