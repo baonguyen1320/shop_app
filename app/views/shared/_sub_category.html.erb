@@ -13,7 +13,7 @@
 <% else %>
     <% if category.published %>
         <li class="item_category">
-          <%= link_to '<i class="material-icons md-36 icon-cate">'.html_safe + category.icon + '</i>&nbsp; &nbsp;'.html_safe + category.title, request.base_url + '/categories/' + category.id.to_s %>
+          <%= link_to '<i class="material-icons md-36 icon-cate">'.html_safe + category.icon + '</i>&nbsp; &nbsp;'.html_safe + category.title, request.base_url + '/categories/' + category.slug %>
         </li>
     <% end %>
 <% end %>

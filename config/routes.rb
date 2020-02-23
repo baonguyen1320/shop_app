@@ -15,9 +15,23 @@ Rails.application.routes.draw do
     end
   end
 
+  # concern :paginatable do
+  #   get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  # end
+
+  # concern :paging_category do
+  #   get '(/:id/page/:page)', :action => :show, :on => :collection, :as => ''
+  # end
+
+  # resources :categories, :concerns => :paging_category do
+  #   resources :products
+  # end
+
   resources :categories do
     resources :products
   end
+
+  # resources :products, :concerns => :paginatable
 
   get 'check-user' => 'users#check_user'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

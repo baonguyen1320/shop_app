@@ -66,9 +66,12 @@
       <%= render partial: 'shared/category' %>
     </div>
     <div class="col s12 m12 l9">
-      <% if @products.present? && @products.count > 0 %>
+      <% if @products.present? && @products.size > 0 %>
         <div class="row row-latest-home-items">
           <%= render partial: 'shared/products' %>
+        </div>
+        <div class="apple_pagination">
+          <%= will_paginate @products %>
         </div>
       <% end %>
     </div>

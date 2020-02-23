@@ -1,7 +1,10 @@
 class Product < ApplicationRecord
-  # require 'babosa'
+  require 'babosa'
   require 'rubygems'
   require 'nokogiri'
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :category
 
@@ -12,6 +15,14 @@ class Product < ApplicationRecord
   mount_uploader :data_file, DataFileUploader
 
   before_save :replace_image_tag
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :vietnamese).to_s
+  end
+
+  def should_generate_new_friendly_id
+    slug.blank? || self.name_changed?
+  end
 
   private
 

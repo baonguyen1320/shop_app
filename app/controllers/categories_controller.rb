@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  require 'will_paginate/array'
+
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -18,7 +20,7 @@ class CategoriesController < ApplicationController
       @products = Product.all.order('id desc')
     end
 
-    # @products = @products.paginate(page: params[:page], per_page: 9)
+    @products = @products.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /categories/new

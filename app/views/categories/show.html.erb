@@ -12,6 +12,9 @@
             <%= render partial: 'shared/products' %>
           </div>
 
+          <div class="apple_pagination">
+            <%= will_paginate @products %>
+          </div>
       <% end %>
     </div>
   </div>
