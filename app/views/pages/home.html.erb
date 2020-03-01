@@ -62,10 +62,31 @@
 
 <div class="container" id="customize-home-container">
   <div class="row">
+    <div class="col s12 m6 l11">
+      <%= form_tag(products_search_path, remote: true, method: :post) do %>
+          <div class="input-field">
+            <div class="card z-depth-1">
+              <div class="search-box-article">
+                <i class="material-icons md-36 prefix">search</i>
+                <%= text_field_tag :search_text, params[:search_text], placeholder: 'Type and ENTER for search', id: 'textbox_search' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="col s12 m6 l1">
+      <%= link_to '<i class="material-icons md-72">arrow_drop_up</i>&nbsp;'.html_safe, products_sort_up_path,
+                  title: 'Price Up', remote: true, method: :post %>
+
+      <%= link_to '<i class="material-icons md-72">arrow_drop_down</i>&nbsp;'.html_safe, products_sort_down_path,
+                  title: 'Price Down', remote: true, method: :post %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col s12 m12 l3 left-menu-tab">
       <%= render partial: 'shared/category' %>
     </div>
-    <div class="col s12 m12 l9">
+    <div class="col s12 m12 l9" id="container-products">
       <% if @products.present? && @products.size > 0 %>
         <div class="row row-latest-home-items">
           <%= render partial: 'shared/products' %>

@@ -1080,6 +1080,18 @@ main {
     font-weight: bold;
   }
 
+  .card-image {
+    text-align: center;
+  }
+
+  .card-image > img {
+    width: auto !important;
+    display: inline-block !important;
+    vertical-align: middle;
+    max-height: 117px;
+    max-width: 208px;
+  }
+
   .card .card-title {
     color: #4a4a4a;
     font-size: 20px;

@@ -46,7 +46,7 @@ ActiveAdmin.register Product do
       f.input :buyer
       f.input :image, as: :file, hint: f.product.image? ? image_tag(product.image.url, height: '100') : content_tag(:span, 'Pls upload image')
       f.input :manufacturer
-      f.input :langugage
+      f.input :language
       f.input :published
       f.input :tags
     end

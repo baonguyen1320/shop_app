@@ -34,5 +34,13 @@ Rails.application.routes.draw do
   # resources :products, :concerns => :paginatable
 
   get 'check-user' => 'users#check_user'
+  
+  #search
+  post 'products/search' => 'products#search', as: :products_search
+
+  # sort
+  post '/products/sort/price-up' => 'products#price_up', as: :products_sort_up
+  post '/products/sort/price-down' => 'products#price_down', as: :products_sort_down
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

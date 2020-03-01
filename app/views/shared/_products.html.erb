@@ -18,7 +18,7 @@
                   </li>
                   <li class="item-feature-product">
                     <i class="material-icons md-36 icon-banner-news">settings</i>
-                    Manufacturer : <%= product.manufacturer %>
+                    Made by : <%= product.manufacturer %>
                   </li>
                 </ul>
               </div>
@@ -27,7 +27,7 @@
       <% end %>  
           <div class="card-action">
             <div class="row">
-              <div class="col s6 l4"><%= product.price %></div>
+              <div class="col s6 l4"><span class="price-product"><strong><%= product.price %>$</strong></span></div>
               <div class="col s6 l8"><a href="#" class="waves-effect waves-light btn right">Add to cart</a></div>
             </div>
           </div>

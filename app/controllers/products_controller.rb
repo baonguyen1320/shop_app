@@ -65,6 +65,44 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    search_text = params[:search_text]
+
+    if search_text.present?
+      @products = Product.all
+    else
+      @products = Product.where('name LIKE ? OR content LIKE ? OR tags LIKE ?', "%#{search_text}%", "%#{search_text}%", "%#{search_text}%").order('created_at DESC')
+    end
+
+    if @products.present?
+      @products = @products.paginate(page: params[:page], per_page: 8)
+    end
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def price_up
+    @products = Product.all.order('price ASC')
+
+    @products = @products.paginate(page: params[:page], per_page: 8)
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def price_down
+    @products = Product.all.order('price DESC')
+
+    @products = @products.paginate(page: params[:page], per_page: 8)
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
