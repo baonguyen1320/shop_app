@@ -16,3 +16,18 @@ class Category < ApplicationRecord
     slug.blank? || self.title_changed?
   end
 end
+
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :bigint           not null, primary key
+#  icon       :string(255)
+#  published  :integer          default("1")
+#  slug       :string(255)
+#  tag        :integer
+#  title      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  parent_id  :integer
+#

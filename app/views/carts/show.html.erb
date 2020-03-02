@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Token key:</strong>
+  <%= @cart.token_key %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @cart.string %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @cart.email %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @cart.tag %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

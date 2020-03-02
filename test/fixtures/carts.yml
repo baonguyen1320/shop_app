@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: carts
+#
+#  id         :bigint           not null, primary key
+#  email      :string
+#  string     :string
+#  tag        :string
+#  token_key  :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+one:
+  token_key: MyString
+  string: MyString
+  email: MyString
+  tag: MyString
+
+two:
+  token_key: MyString
+  string: MyString
+  email: MyString
+  tag: MyString

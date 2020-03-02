@@ -1,0 +1,58 @@
+<table>
+  <thead>
+  <tr>
+    <th class="mail-order-th" id="th-table-item-title">Item</th>
+    <th class="mail-order-th-name">Name</th>
+    <th class="center mail-order-th">Quantity</th>
+    <th class="left mail-order-th" id="th-table-space-title">&nbsp;</th>
+    <th class="mail-order-th">Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% cart.order_items.each do |order_item| %>
+      <tr>
+        <td id="td-table-image-item">
+          <%= image_tag order_item.product.image.url(:thumb), class: 'thumbnail-image-line-item-cart' %>
+        </td>
+
+        <td>
+          <%= link_to order_item.product.name, category_product_path(order_item.product.category, order_item.product), target: :_blank %>
+        </td>
+
+        <td class="center">
+          <%= order_item.quantity %>
+        </td>
+
+        <td id="td-adj-number">
+          <div class="row row-adj-up-down">
+            <div class="col s12 col-adj-product">
+              <%= link_to '<i class="material-icons md-72 adj-quantity-cart">arrow_drop_up</i>&nbsp;'.html_safe, order_items_path + '/up/' + order_item.id.to_s, remote: true, method: :post %>
+            </div>
+
+            <div class="col s12">
+              <%= link_to '<i class="material-icons md-72 adj-quantity-cart">arrow_drop_down</i>&nbsp;'.html_safe, order_items_path + '/down/' + order_item.id.to_s, remote: true, method: :post %>
+            </div>
+          </div>
+        </td>
+
+        <td>$<%= order_item.total_price %></td>
+
+        <td class="center">
+          <%= link_to '<i class="material-icons">delete</i>'.html_safe, order_items_path + '/' + order_item.id.to_s, remote: true,
+                      method: :delete, data: {confirm: 'Are you sure?'}, class: 'destroy-line-item', title: 'Delete item' %>
+        </td>
+      </tr>
+  <% end %>
+  <tr class="total_line">
+    <td>&nbsp;</td>
+    <td class="td-table-space-total">&nbsp;</td>
+    <td class="center"><b>Total</b></td>
+    <td class="td-table-space-total">&nbsp;</td>
+    <td class="total_cell"><b>$<%= cart.total_price.to_s %></b></td>
+
+    <td class="center">
+      <%= link_to '<i class="material-icons md-36" id="icon-delete-all-cart">delete_sweep</i>'.html_safe, carts_path + '/' + cart.id.to_s, method: :delete, data: {confirm: 'Are you sure?'}, title: 'Delete All' %>
+    </td>
+  </tr>
+  </tbody>
+</table>

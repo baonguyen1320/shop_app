@@ -77,6 +77,8 @@ gem "paperclip", "~> 6.0.0"
 gem 'babosa', '~> 1.0', '>= 1.0.2'
 gem 'friendly_id', '5.2.1'
 
+gem 'annotate'
+
 group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

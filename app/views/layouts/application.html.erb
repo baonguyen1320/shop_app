@@ -15,6 +15,27 @@
 
   <body>
     <%= render partial: 'shared/header'%>
+    <%= render partial: 'shared/message'%>
+
+    <div class="container">
+      <div id="modal-cart" class="modal">
+        <div class="modal-header">
+          <div id="title-cart-modal">
+            <i class="material-icons md-36">shopping_cart</i>
+            <div id="text-cart-header">Your cart</div>
+          </div>
+        </div>
+        <div class="modal-content">
+          <div class="cart">
+            <% if @cart %>
+                <% unless @cart.order_items.empty? %>
+                    <%= render @cart %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     <main>
       <div class="container">
         <%= yield %>

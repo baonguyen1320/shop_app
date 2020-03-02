@@ -17,7 +17,6 @@
 //= require active_admin
 //= require active_admin/sortable
 //= require ckeditor/init
-//= require rails-ujs
 //= require toastr
 //= require_tree .
 

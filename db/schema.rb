@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_090136) do
+ActiveRecord::Schema.define(version: 2020_03_01_164027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,15 +43,24 @@ ActiveRecord::Schema.define(version: 2020_02_23_090136) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title"
-    t.string "icon"
-    t.integer "tag"
-    t.integer "parent_id"
-    t.boolean "published"
-    t.string "slug"
+  create_table "carts", force: :cascade do |t|
+    t.string "token_key"
+    t.string "string"
+    t.string "email"
+    t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title", limit: 255
+    t.integer "tag"
+    t.integer "published", limit: 2, default: 1
+    t.string "icon", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.string "slug", limit: 255
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -78,25 +87,50 @@ ActiveRecord::Schema.define(version: 2020_02_23_090136) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "quantity", default: 1
+    t.bigint "cart_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_order_items_on_cart_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "order_number"
+    t.decimal "total", precision: 8, scale: 2, default: "0.0"
+    t.string "payment_type"
+    t.string "status"
+    t.decimal "shipping_fee", precision: 8, scale: 2, default: "0.0"
+    t.decimal "tax_fee", precision: 8, scale: 2, default: "0.0"
+    t.string "token_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
     t.text "content"
     t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.integer "buyer", default: 0
-    t.string "data_file"
-    t.string "manufacturer"
+    t.string "data_file", limit: 255
+    t.string "manufacturer", limit: 255
     t.bigint "category_id"
-    t.boolean "published", default: true
-    t.string "tags"
-    t.string "langugage", default: "English"
-    t.string "slug"
+    t.integer "published", limit: 2, default: 1
+    t.string "tags", limit: 255
+    t.string "language", limit: 255, default: "English"
+    t.string "slug", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
+    t.string "image_file_name", limit: 255
+    t.string "image_content_type", limit: 255
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,5 +166,9 @@ ActiveRecord::Schema.define(version: 2020_02_23_090136) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "order_items", "carts"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
 end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :order_items, only: [:create, :destroy]
+  resources :orders
+  resources :carts
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

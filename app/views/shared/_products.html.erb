@@ -28,7 +28,11 @@
           <div class="card-action">
             <div class="row">
               <div class="col s6 l4"><span class="price-product"><strong><%= product.price %>$</strong></span></div>
-              <div class="col s6 l8"><a href="#" class="waves-effect waves-light btn right">Add to cart</a></div>
+              <div class="col s6 l8">
+                <%= form_tag order_items_path(product_id: product.id), remote: true, method: :post do %>
+                    <%= submit_tag('Add to cart', class: 'btn orange darken-4 right', name: 'submit') %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

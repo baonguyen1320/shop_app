@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   require 'will_paginate/array'
+  include CurrentCart
+  before_action :set_cart
 
   def home
     # flash[:google_sign_in][:id_token]
