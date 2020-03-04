@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-  <% cart.order_items.each do |order_item| %>
+  <% cart.order_items.order('created_at asc').each do |order_item| %>
       <tr>
         <td id="td-table-image-item">
           <%= image_tag order_item.product.image.url(:thumb), class: 'thumbnail-image-line-item-cart' %>

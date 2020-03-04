@@ -3,14 +3,14 @@ class CartsController < ApplicationController
   require 'digest'
   include CurrentCart
 
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:index, :show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    # @carts = Cart.all
   end
 
   # GET /carts/1

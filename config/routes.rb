@@ -45,5 +45,7 @@ Rails.application.routes.draw do
   post '/products/sort/price-up' => 'products#price_up', as: :products_sort_up
   post '/products/sort/price-down' => 'products#price_down', as: :products_sort_down
 
+  post '/order_items/up/:id' => 'order_items#increment_quantity'
+  post '/order_items/down/:id' => 'order_items#decrement_quantity'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

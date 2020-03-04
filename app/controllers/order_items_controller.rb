@@ -1,8 +1,8 @@
 class OrderItemsController < ApplicationController
   include CurrentCart
 
-  before_action :set_cart, only: [:create, :destroy]
-  before_action :set_order_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :destroy, :increment_quantity, :decrement_quantity]
+  before_action :set_order_item, only: [:show, :edit, :update, :destroy, :increment_quantity, :decrement_quantity]
 
   # GET /order_items
   # GET /order_items.json
@@ -78,6 +78,32 @@ class OrderItemsController < ApplicationController
         format.json { head :no_content }
         format.js { render layout: false }
       end
+    end
+  end
+
+  def increment_quantity
+    @order_item.quantity += 1
+    @order_item.save
+
+    respond_to do |format|
+      format.js {
+        @cart.updated_at = Time.now
+        @cart.save
+        render layout: false
+      }
+    end
+  end
+
+  def decrement_quantity
+    @order_item.quantity -= 1 if @order_item.quantity >= 2
+    @order_item.save
+
+    respond_to do |format|
+      format.js {
+        @cart.updated_at = Time.now
+        @cart.save
+        render layout: false
+      }
     end
   end
 

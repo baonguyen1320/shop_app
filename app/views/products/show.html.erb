@@ -36,7 +36,7 @@
 
             <div class="card-action center">
               <div class="container-payment-button">
-                <%= form_tag order_items_path(product_id: product.id), remote: true, method: :post do %>
+                <%= form_tag order_items_path(product_id: @product.id), remote: true, method: :post do %>
                     <%= submit_tag('Add to Cart', class: 'btn pink darken-2 paybutton', name: 'submit') %>
                 <% end %>
               </div>
