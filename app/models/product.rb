@@ -64,8 +64,10 @@ end
 #  language           :string(255)      default("English")
 #  manufacturer       :string(255)
 #  name               :string(255)
+#  older_price        :decimal(8, 2)    default("0")
 #  price              :decimal(8, 2)    default("0.00")
 #  published          :integer          default("1")
+#  sale_time          :datetime
 #  slug               :string(255)
 #  tags               :string(255)
 #  created_at         :datetime         not null

@@ -11,13 +11,13 @@
             </div>
 
             <div class="center container-price">
-              <% if false %>
+              <% if !@product.sale_time.blank? && (@product.price < @product.older_price) && (@product.sale_time > Time.now) %>
                   <div class="price-text-course">
                     <p>
                       <span id="price-current-product">$<%= @product.price.to_s %></span>
                       <span id="older-price-product">$<%= @product.older_price.to_s %></span>
                       <span id="discount-text">
-                      <%= @product.percent_sale_off %>
+                      <%= percent_sale_off(@product) %>
                     </span>
                     </p>
 
@@ -93,3 +93,17 @@
       </div>
   <% end %>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+        $('.modal').modal();
+
+        <% if (!@product.sale_time.blank? && (@product.sale_time > Time.now)) %>
+        $('#message-sale-off-product').countdown({
+            until: new Date('<%= @product.sale_time %>'),
+            padZeroes: true
+        });
+        <% end %>
+    });
+</script>
