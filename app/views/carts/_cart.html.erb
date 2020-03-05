@@ -56,3 +56,165 @@
   </tr>
   </tbody>
 </table>
+
+<!-- ---------------------- -->
+<div id="cart-user-info-larger">
+  <% if !user_signed_in? %>
+      <%= form_tag cart_send_confirm_order_path, id: 'user_info_form_no_modal', remote: true, authenticity_token: true, method: :post do %>
+          <div class="row row-user-modal-cart">
+            <div class="col s12">
+              <div class="input-field center input-user-modal-cart">
+                <p class="guide-message-steps-order">Step 1: Confirm the order by Google - Facebook - Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row center">
+            <div class="col s12">
+              <%= link_to '<i class="fa fa-google-plus"></i>&nbsp; &nbsp; Confirm with Google'.html_safe, confirm_auth_path(auth: 'google'), class: 'btn red darken-1' %>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col s12">
+              <%= link_to '<i class="fa fa-facebook"></i>&nbsp; &nbsp; Confirm with Facebook'.html_safe, confirm_auth_path(auth: 'facebook'), class: 'btn blue darken-4' %>
+            </div>
+          </div>
+          <div class="row row-user-modal-cart">
+            <div class="col s12">
+              <div class="input-field center input-user-modal-cart">
+                <p class="guide-message-steps-order">
+                  Or confirm by email:</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-user-modal-cart">
+            <div class="col s12">
+              <div class="input-field center input-user-modal-cart">
+                <span>Email: </span>
+                <input autocomplete="on" class="edit_profile user-infomation-no-modal-cart" placeholder="Email" type="email" value="" name="user_email" id="user_email">
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-user-modal-cart">
+            <div class="col s12">
+              <div class="input-field input-user-modal-cart">
+                <p id="message_sent_email_confirm_order">Enter the email address and press
+                  Confirm, then check the confirmation email (Inbox or Spam folder).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row submit-user-in-cart">
+            <div class="input-field col s12 center" id="button-submit-register-user-in-cart">
+              <%= submit_tag('Confirm', id: 'payment-co-button', :class => 'btn pink darken-2 paybutton', :name => 'submit', title: 'Confirm email before to order') %>
+            </div>
+          </div>
+      <% end %>
+  <% else %>
+      <% @user = User.find(current_user.id) %>
+      <%= form_tag orders_path, id: 'user_info_form_no_modal', authenticity_token: true, method: :post do %>
+          <div class="row row-user-modal-cart">
+            <div class="col s12">
+              <div class="input-field center input-user-modal-cart">
+                <p class="guide-message-steps-order">Step 2: Enter user's information, please
+                  check carefully before payment.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="users_information_container_cart">
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                Name:
+              </div>
+              <div class="col s10">
+                <input autocomplete="on" class="edit_profile user-infomation-no-modal-cart" placeholder="Name (minimum 3 chars)" type="text" name="user_name" id="user_name" value="<%= @user.name %>">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                Address:
+              </div>
+              <div class="col s10">
+                <input id="user_address" class="edit_profile user-infomation-no-modal-cart" placeholder="Address - Can not blank" autofocus="autofocus" type="text" value="<%= @user.address %>" name="user_address">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                Phone:
+              </div>
+              <div class="col s10">
+                <input id="user_phone" class="edit_profile user-infomation-no-modal-cart" placeholder="Phone - Can not blank" type="text" value="<%= @user.phone %>" name="user_phone">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                City:
+              </div>
+              <div class="col s10">
+                <input id="user_city" class="edit_profile user-infomation-no-modal-cart" placeholder="City - Can not blank" autofocus="autofocus" type="text" value="<%= @user.city %>" name="user_city">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                Country:
+              </div>
+              <div class="col s10">
+                <%= select_tag 'user_country', options_for_select(ISO3166::Country.all, selected: @user.country), class: 'select-country-cart' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2 title-field-in-no-modal-cart" style="padding: 10px 0;">
+                Zipcode:
+              </div>
+              <div class="col s10">
+                <input id="user_zipcode" class="edit_profile user-infomation-no-modal-cart" placeholder="Zipcode - Can not blank" autofocus="autofocus" type="text" value="<%= @user.zipcode %>" name="user_zipcode">
+              </div>
+            </div>
+
+            <input class="validate" type="hidden" name="user_check" id="user_info" value="UpdateUser">
+
+            <div class="row">
+              <div class="input-field col s12 center">
+                <%= submit_tag('Checkout', id: 'payment-co-button-no-modal', :class => 'btn pink darken-2 paybutton', :name => 'submit', title: 'Fill users information before to order') %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>
+
+<script>
+    function ShowMessageNoteEmail() {
+        $("#message_sent_email_confirm_order").css("color", "initial");
+        $("#message_sent_email_confirm_order").css("font-size", "16px");
+        $("#message_sent_email_confirm_order").css("font-weight", "normal");
+
+        $("#message_sent_email_confirm_order").html("Enter the email address and press Confirm, then check the confirmation email (Inbox or Spam folder).");
+    }
+
+    $(document).ready(function () {
+        $("#user_email").mouseup(ShowMessageNoteEmail);
+        $("#user_email").keyup(ShowMessageNoteEmail);
+
+        $('#user_info_form_no_modal').submit(function () {
+            var allIsOk = true;
+
+            // Check if empty of not
+            $(this).find('input[type!="hidden"]').each(function () {
+                if (!$(this).val()) {
+                    allIsOk = false;
+                }
+            });
+
+            return allIsOk
+        });
+    });
+</script>

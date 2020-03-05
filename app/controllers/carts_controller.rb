@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   require 'digest'
   include CurrentCart
 
-  before_action :set_cart, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:index, :show, :edit, :update, :destroy, :send_confirm_order, :confirm_auth]
 
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
@@ -73,6 +73,18 @@ class CartsController < ApplicationController
       format.html { redirect_to '/', notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def send_confirm_order
+
+  end
+
+  def confirm_auth
+
+  end
+
+  def confirm_email
+    
   end
 
   private

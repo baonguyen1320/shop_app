@@ -47,5 +47,11 @@ Rails.application.routes.draw do
 
   post '/order_items/up/:id' => 'order_items#increment_quantity'
   post '/order_items/down/:id' => 'order_items#decrement_quantity'
+
+  post '/carts/send_confirm_order' => 'carts#send_confirm_order', as: :cart_send_confirm_order
+
+  get '/cart-confirm-auth' => 'carts#confirm_auth', as: :confirm_auth
+  get '/cart-confirm-email' => 'carts#confirm_email'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

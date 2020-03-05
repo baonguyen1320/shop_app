@@ -28,6 +28,24 @@
         </a>
 
         <ul class="right hide-on-med-and-down">
+          <% if @cart.present? %>
+              <li class="row cart-on-header">
+                <%= link_to carts_path + '/' + @cart.id.to_s, remote: true, id: 'cart-icon-on-header' do %>
+                    <div class="col s6 m6 l3 offset-l3 div-cart-line-count">
+                      <% if @cart.items_count.to_i > 0 %>
+                          <span class='circle cart-line-items-count' id="count-items-in-cart"><%= @cart.items_count %></span>
+                      <% else %>
+                          <span class='circle cart-line-items-count' id="count-items-in-cart">00</span>
+                      <% end %>
+                    </div>
+                    <div class="col s6 m6 l6">
+                      <i class="material-icons md-48" style="line-height: 1;">shopping_cart</i>
+                    </div>
+                <% end %>
+              </li>
+          <% end %>
+
+          
           <li class="li-list-item-top-menu">
             <ul class="ul-list-item-header">
               <a href="#" class="link-to-item-header">

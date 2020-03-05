@@ -1,2 +1,7 @@
 $('.cart').html("<%= j render(@cart) %>");
+$('#count-items-in-cart').html("<%=j @cart.items_count %>");
+$('#count-items-in-cart-menu').html("<%=j @cart.items_count %>");
+
 $('#modal-cart').modal('open');
+$('#cart-icon-on-header').show();
+$('#cart-icon-on-header-menu').show();
