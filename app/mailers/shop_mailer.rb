@@ -7,4 +7,12 @@ class ShopMailer < ApplicationMailer
     to = user.email
     mail(to: to, subject: subject)
   end
+
+  def new_receipt(user, order)
+    @user = user
+    @order = order
+    subject = 'this is test job send email'
+
+    mail(to: @user.email, subject: subject)
+  end
 end

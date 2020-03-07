@@ -79,6 +79,11 @@ gem 'friendly_id', '5.2.1'
 
 gem 'annotate'
 
+gem 'sidekiq'
+gem 'redis'
+gem 'redis-namespace'
+gem 'daemons'
+
 group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

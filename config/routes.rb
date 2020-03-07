@@ -1,8 +1,10 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :order_items, only: [:create, :destroy]
   resources :orders
   resources :carts
   mount Ckeditor::Engine => '/ckeditor'
+  mount Sidekiq::Web => '/sidekiq'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', password: 'secret', confirmation: 'confirmations', unlock: 'unblock', registration: 'register', sign_up: ''},
@@ -52,6 +54,8 @@ Rails.application.routes.draw do
 
   get '/cart-confirm-auth' => 'carts#confirm_auth', as: :confirm_auth
   get '/cart-confirm-email' => 'carts#confirm_email'
+
+  get 'orders/history' => 'orders#history', as: :orders_history
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

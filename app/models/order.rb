@@ -3,6 +3,14 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 end
 
+def send_receipt_email
+  @user = User.find_by_email(self.user.email)
+  @order = self
+
+  # time = Time.now
+  SendEmailOrderJob.perform_later(@user, @order) if @user.present?
+end
+
 # == Schema Information
 #
 # Table name: orders

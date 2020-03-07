@@ -17,7 +17,7 @@ class User < ApplicationRecord
   after_create :send_email_welcome
 
   def send_email_welcome
-    ShopMailer.to_user(self).deliver
+    SendWelcomeEmailJob.perform_later(self)
   end
 
   def self.find_for_google_oauth2(provider, uid, name, email, avatar)

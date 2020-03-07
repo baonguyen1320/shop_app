@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  <style>
+    .mail-order-th {
+      min-width: 100px;
+      text-align: left;
+    }
+
+    .mail-order-th-name {
+      min-width: 100px;
+      text-align: left;
+    }
+
+    .card {
+      position: relative;
+      margin: 0.5rem 0 1rem 0;
+      background-color: #f3f3f3;
+      transition: box-shadow .25s;
+      border-radius: 2px;
+    }
+
+    .card .card-image {
+      display: block;
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card .card-content {
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0 0 2px 2px;
+    }
+
+    .container {
+      margin-left: 10px;
+      width: 98%;
+      max-width: 1300px;
+    }
+
+    .title-order-page {
+      color: white;
+      background-color: darkcyan;
+      padding: 10px 15px;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="title-order-page">
+      New Order Information
+    </div>
+    <div class="card-content">
+      <p>Dear <%= @user.name %>,</p>
+
+      <p>Thank you for purchasing our product. Below is your receipt details:</p>
+
+      <p>Order ID : <%= link_to @order.order_number, root_url + 'orders/history' + "?email=#{@user.email}" %></p>
+
+      <table>
+        <thead>
+        <tr>
+          <th class="mail-order-th-name" style="text-align: center;">Name</th>
+          <th class="mail-order-th" style="text-align: center;">Quantity</th>
+          <th class="mail-order-th" style="text-align: center;">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.product.name %></td>
+              <td style="text-align: center;"><%= order_item.quantity.to_s %></td>
+              <td>$<%= order_item.total_price.to_s %></td>
+            </tr>
+
+            <tr class="total_line">
+              <td></td>
+              <td style="text-align: center;">Total</td>
+              <td class="total_cell"><%= number_to_currency(@order.total) %></td>
+            </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
