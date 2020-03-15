@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require active_admin/base
-//= require jquery
+//= require rails-ujs
 //= require materialize
 //= require materialize-sprockets
 //= require active_admin
