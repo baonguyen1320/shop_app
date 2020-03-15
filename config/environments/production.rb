@@ -97,4 +97,31 @@ Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
   config.active_job.queue_name_prefix = 'shop'
   config.active_job.queue_name_delimiter = "_"
+
+    # storage in s3
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_host_name: "s3-ap-southeast-1.amazonaws.com",
+    s3_credentials: {
+      bucket: 'shop-app-aws',
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      s3_region: ENV['AWS_S3_REGION']
+    },
+  }
+
+  config.action_mailer.default_url_options = { host: '45.77.45.97', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'localhost:3000',
+    user_name: 'baonguyen1103spkt@gmail.com',
+    password: 'wuyuzonwsqkluvfd',
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
+  config.google_sign_in.client_id     = ENV['GOOGLE_APP_ID']
+  config.google_sign_in.client_secret = ENV['GOOGLE_APP_SECRET']
 end
