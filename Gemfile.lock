@@ -331,7 +331,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (3.2.3)
+    fog-vsphere (3.2.5)
       fog-core
       rbvmomi (>= 1.9, < 3)
     fog-xenserver (1.0.0)
@@ -430,7 +430,7 @@ GEM
     net-ssh (5.2.0)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
     oauth2 (1.4.4)
@@ -472,7 +472,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.3)
-    puma (3.12.2)
+    puma (3.12.4)
     rack (2.2.2)
     rack-protection (2.0.5)
       rack
@@ -658,7 +658,7 @@ DEPENDENCIES
   paperclip (~> 6.0.0)
   pg (>= 0.18, < 2.0)
   pry-rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.3)
   recaptcha
   redis
