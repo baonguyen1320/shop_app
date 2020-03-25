@@ -53,14 +53,14 @@ ActiveRecord::Schema.define(version: 2020_03_05_062117) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title", limit: 255
+    t.string "title"
+    t.string "icon"
     t.integer "tag"
-    t.integer "published", limit: 2, default: 1
-    t.string "icon", limit: 255
+    t.integer "parent_id"
+    t.boolean "published"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "parent_id"
-    t.string "slug", limit: 255
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -114,25 +114,26 @@ ActiveRecord::Schema.define(version: 2020_03_05_062117) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.text "content"
     t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.integer "buyer", default: 0
-    t.string "data_file", limit: 255
-    t.string "manufacturer", limit: 255
+    t.string "data_file"
+    t.string "manufacturer"
     t.bigint "category_id"
-    t.integer "published", limit: 2, default: 1
-    t.string "tags", limit: 255
-    t.string "language", limit: 255, default: "English"
-    t.string "slug", limit: 255
+    t.boolean "published", default: true
+    t.string "tags"
+    t.string "langugage", default: "English"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name", limit: 255
-    t.string "image_content_type", limit: 255
+    t.string "image_file_name"
+    t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.datetime "sale_time"
     t.decimal "older_price", precision: 8, scale: 2, default: "0.0"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|

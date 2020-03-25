@@ -3,11 +3,11 @@
 # Table name: categories
 #
 #  id         :bigint           not null, primary key
-#  icon       :string(255)
-#  published  :integer          default("1")
-#  slug       :string(255)
+#  icon       :string
+#  published  :boolean
+#  slug       :string
 #  tag        :integer
-#  title      :string(255)
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  parent_id  :integer
