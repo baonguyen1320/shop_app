@@ -11,7 +11,7 @@ set :application,     'shop_app'
 
 # account signin server
 set :user,            'baont'
-set :password,        'Mylove@1320'
+set :password,        ENV['PASSWORD_SIGNIN_SERVER']
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
