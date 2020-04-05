@@ -1,18 +1,23 @@
 <footer class="page-footer blue-grey darken-3">
   <div class="container" id="customize-home-container">
     <div class="row">
-      <div class="col s12 m6 l6 center">
+      <div class="col s12 m4 l3 center">
         <h5 class="white-text">Connect us</h5>
         <ul>
           <li>
-            <%= link_to image_tag('youtube48.png', :alt => 'Youtube'), root_path, class: 'image-social-footer', target: :blank %>
-            <%= link_to image_tag('facebook48.png', :alt => 'Facebook'), root_path, class: 'image-social-footer', target: '_blank' %>
+            <%= link_to image_tag('github48.png', :alt => 'Youtube'), 'https://github.com/baonguyen1320', class: 'image-social-footer', target: :blank %>
+            <%= link_to image_tag('facebook48.png', :alt => 'Facebook'), 'https://www.facebook.com/bao.nguyen.me', class: 'image-social-footer', target: '_blank' %>
           </li>
         </ul>
       </div>
 
-      <div class="col s12 m6 l4 offset-l2 center">
-        <h5 class="white-text">SuperShop</h5>
+      <div class="col s12 m4 l6 center">
+        <h5 class="white-text">Webadmin: <a href="/admin" target="_blank">45.77.45.97.xip.io/admin</a></h5>
+        <h6 class="white-text">admin@example.com/123456</h6>
+      </div>
+
+      <div class="col s12 m4 l3 center">
+        <h5 class="white-text">Rails Shop App</h5>
         <ul>
           <li>
             <%= link_to 'About Us', root_path , :class => 'grey-text text-lighten-3' %>
@@ -24,7 +29,7 @@
   </div>
   <div class="footer-copyright">
     <div class="container">
-      © 2016 Copyright Enziin Academy
+      © 2020 Copyright
     </div>
   </div>
 </footer>

@@ -3,9 +3,8 @@
     <li>
       <%= image_tag 'slider-1.jpg', style: "width: 100%; height: 100%" %>
       <div class="caption left-align" style="top: 3%">
-        <h3>Rails Shop App</h3>
+        <h3>Rails Shop App: <a href="https://github.com/baonguyen1320/shop_app">Repository</a></h3>
         <h5>Just to demo</h5>
-        <h5>Don't care content pls</h5>
         <h5>Write somethings...</h5>
         <h5>Nothing to write!</h5>
       </div>
@@ -74,7 +73,7 @@
           </div>
       <% end %>
     </div>
-    <div class="col s12 m6 l1">
+    <div class="col s12 m6 l1 box-up-down">
       <%= link_to '<i class="material-icons md-72">arrow_drop_up</i>&nbsp;'.html_safe, products_sort_up_path,
                   title: 'Price Up', remote: true, method: :post %>
 
