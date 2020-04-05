@@ -60,25 +60,25 @@
 <!-- ---------------------- -->
 <div id="cart-user-info-larger">
   <% if !user_signed_in? %>
-      <%= form_tag cart_send_confirm_order_path, id: 'user_info_form_no_modal', remote: true, authenticity_token: true, method: :post do %>
-          <div class="row row-user-modal-cart">
-            <div class="col s12">
-              <div class="input-field center input-user-modal-cart">
-                <p class="guide-message-steps-order">Step 1: Confirm the order by Google - Facebook - Twitter</p>
-              </div>
+        <div class="row row-user-modal-cart">
+          <div class="col s12">
+            <div class="input-field center input-user-modal-cart">
+              <p class="guide-message-steps-order">Step 1: Confirm the order by Google - Facebook - Twitter</p>
             </div>
           </div>
+        </div>
 
-          <div class="row center">
-            <div class="col s12">
-              <%= link_to '<i class="fa fa-google-plus"></i>&nbsp; &nbsp; Confirm with Google'.html_safe, confirm_auth_path(auth: 'google'), class: 'btn red darken-1' %>
-            </div>
+        <div class="row center">
+          <div class="col s12">
+            <%= google_sign_in_button 'Sign in with my Google account', class:'loginBtn loginBtn--google', proceed_to: create_login_url %>
           </div>
-          <div class="row center">
-            <div class="col s12">
-              <%= link_to '<i class="fa fa-facebook"></i>&nbsp; &nbsp; Confirm with Facebook'.html_safe, confirm_auth_path(auth: 'facebook'), class: 'btn blue darken-4' %>
-            </div>
+        </div>
+        <div class="row center">
+          <div class="col s12">
+            <%= link_to '<i class="fa fa-facebook"></i>&nbsp; &nbsp; Sign up with Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn blue darken-4' %>
           </div>
+        </div>
+        <%= form_tag cart_send_confirm_order_path, id: 'user_info_form_no_modal', remote: true, authenticity_token: true, method: :post do %>
           <div class="row row-user-modal-cart">
             <div class="col s12">
               <div class="input-field center input-user-modal-cart">

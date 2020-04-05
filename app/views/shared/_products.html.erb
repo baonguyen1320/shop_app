@@ -1,40 +1,45 @@
-<% @products.each do |product| %>
-    <div class="col s12 m6 l3">
-      <%= link_to category_product_path(product.category, product) do %>
-        <div class="card z-depth-2">
-          <div class="card-image">
-            <%= image_tag(product.image.url(:thumb)) %>
-          </div>
-          <div class="card-content">
-            <div class="row card-title customize-card-title-product">
-              <%= product.name %>
+<div class="row row-latest-home-items">
+  <% @products.each do |product| %>
+      <div class="col s12 m6 l3">
+        <%= link_to category_product_path(product.category, product) do %>
+          <div class="card z-depth-2">
+            <div class="card-image">
+              <%= image_tag(product.image.url(:thumb)) %>
             </div>
-            <div class="row short-intro-course">
-              <div class="col s12 short-duration-enrolled">
-                <ul class="list-features-product">
-                  <li class="item-feature-product">
-                    <i class="material-icons md-36 icon-banner-news">group</i>
-                    Buyers : <%= product.buyer %>
-                  </li>
-                  <li class="item-feature-product">
-                    <i class="material-icons md-36 icon-banner-news">settings</i>
-                    Made by : <%= product.manufacturer %>
-                  </li>
-                </ul>
+            <div class="card-content">
+              <div class="row card-title customize-card-title-product">
+                <%= product.name %>
+              </div>
+              <div class="row short-intro-course">
+                <div class="col s12 short-duration-enrolled">
+                  <ul class="list-features-product">
+                    <li class="item-feature-product">
+                      <i class="material-icons md-36 icon-banner-news">group</i>
+                      Buyers : <%= product.buyer %>
+                    </li>
+                    <li class="item-feature-product">
+                      <i class="material-icons md-36 icon-banner-news">settings</i>
+                      Made by : <%= product.manufacturer %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        <% end %>  
+            <div class="card-action">
+              <div class="row">
+                <div class="col s6 l4"><span class="price-product"><strong><%= product.price %>$</strong></span></div>
+                <div class="col s6 l8">
+                  <%= form_tag order_items_path(product_id: product.id), remote: true, method: :post do %>
+                      <%= submit_tag('Add to cart', class: 'btn orange darken-4 right', name: 'submit') %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-      <% end %>  
-          <div class="card-action">
-            <div class="row">
-              <div class="col s6 l4"><span class="price-product"><strong><%= product.price %>$</strong></span></div>
-              <div class="col s6 l8">
-                <%= form_tag order_items_path(product_id: product.id), remote: true, method: :post do %>
-                    <%= submit_tag('Add to cart', class: 'btn orange darken-4 right', name: 'submit') %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+</div>
+<div class="apple_pagination">
+  <%= will_paginate @products %>
+</div>

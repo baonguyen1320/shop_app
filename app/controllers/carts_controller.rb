@@ -76,7 +76,8 @@ class CartsController < ApplicationController
   end
 
   def send_confirm_order
-
+    user = User.find_by_email(params[:user_email])
+    SendWelcomeEmailJob.perform_later(user) if user.present?
   end
 
   def confirm_auth
