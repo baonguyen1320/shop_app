@@ -1,25 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is a small project that I built to explore, practive, test gem, deploy, etc... ##
 
-Things you may want to cover:
+**Domain Access**
 
-* Ruby version
+* Webapp: https://45.77.45.97.xip.io
+* WebAdmin: https://45.77.45.97.xip.io/admin
 
-* System dependencies
+            admin@shop.com / 123456
 
-* Configuration
+**This project uses:**
 
-* Database creation
+* Ruby version:
+   **2.5.3**
 
-* Database initialization
+* Rails version
+   **5.2.4**
 
-* How to run the test suite
+* Database: Postgresql
 
-* Services (job queues, cache servers, search engines, etc.)
+* Server: Vultr / Ubuntu / Nginx
 
-* Deployment instructions
+* Sidekiq / Redis
+        
+* Using Amazon S3 to storage images
+
+* Google Sign-In
+
+* Google reCaptcha
+
+* Two factor authentication
+
+* SSL
+
+* Capistrano deployment
 
 * ...
-# shop_app
+
+# Rails Shop App
