@@ -110,7 +110,7 @@ Rails.application.configure do
     },
   }
 
-  config.action_mailer.default_url_options = { host: '45.77.45.97', port: 3000 }
+  config.action_mailer.default_url_options = { host: '45.77.45.97.xip.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
