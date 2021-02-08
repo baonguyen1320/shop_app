@@ -60,7 +60,7 @@ gem 'barby'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 # ckeditor need mini_magick go with
 gem 'ckeditor', '4.2.4'
-gem 'carrierwave', '1.2.1'
+gem 'carrierwave', '1.3.2'
 gem 'fog', '1.42.0'
 gem "mini_magick", ">= 4.9.4"
 gem 'html_truncator', '0.4.1'
