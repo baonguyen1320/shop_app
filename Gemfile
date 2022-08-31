@@ -42,7 +42,7 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
-gem 'omniauth', '~> 1.7', '>= 1.7.1'
+gem 'omniauth', '~> 1.9'
 gem 'google_sign_in'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-twitter', '~> 1.4'
